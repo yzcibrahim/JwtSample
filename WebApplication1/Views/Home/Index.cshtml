@@ -1,0 +1,38 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
+
+
+<script>
+    function postSth() {
+        $.ajax({
+            url: "/Home/IndexJson",
+            data: null,
+            success: function (res) {
+                console.log(res);
+               
+            },
+            dataType: "JSON"
+        });
+    }
+
+    function postWithToken()
+    {
+        $.ajax({
+            url: "/Home/IndexJson",
+            data: null,
+            success: function (res) {
+                console.log(res);
+
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1bmlxdWVfbmFtZSI6InN0cmluZyIsInJvbGUiOiJhZG1pbiIsIm5iZiI6MTY1MjEwOTgzOCwiZXhwIjoxNjUyMTEzNDM4LCJpYXQiOjE2NTIxMDk4Mzh9.HK-blS91dgR2JByIb13vjBADp-ap0aveHl9CgAW6lyA');
+            }
+        });
+    }
+</script>
